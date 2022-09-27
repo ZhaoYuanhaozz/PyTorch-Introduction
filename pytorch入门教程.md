@@ -136,7 +136,7 @@ autograd 包是 PyTorch 的核心。autograd 为 Tensors 上的所有操作提�
 
 ### 计算导数
 ```
-# Create tensors.
+# 创建tensors.
 x = torch.tensor(3.)
 w = torch.tensor(4., requires_grad=True)
 b = torch.tensor(5., requires_grad=True)
