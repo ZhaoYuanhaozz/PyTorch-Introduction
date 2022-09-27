@@ -147,12 +147,10 @@ Output:
 (tensor(3.), tensor(4., requires_grad=True), tensor(5., requires_grad=True))
 ```
 
-We've created three tensors: x, w, and b, all numbers. w and b have an additional parameter requires_grad set to True. We'll see what it does in just a moment.
-
-Let's create a new tensor y by combining these tensors.
+我们在上面创建了三个张量：x、w 和 b，都是数字。 w 和 b 有一个额外的参数 requires_grad 设置为 True。 
+我们通过组合上面的张量来创建一个新的张量y。
 
 ```
-# Arithmetic operations
 y = w * x + b
 y
 ```
@@ -160,15 +158,15 @@ Output:
 ```
 tensor(17., grad_fn=<AddBackward0>)
 ```
-As expected, y is a tensor with the value 3 * 4 + 5 = 17. What makes PyTorch unique is that we can automatically compute the derivative of y w.r.t. the tensors that have requires_grad set to True i.e. w and b. This feature of PyTorch is called autograd (automatic gradients).
+y 是一个值为 3 * 4 + 5 = 17 的张量。PyTorch 的独特之处在于我们可以自动计算 y w.r.t 的导数。 将 requires_grad 设置为 True 的张量，即 w 和 b。 PyTorch 的这个特性称为 autograd。
 
-To compute the derivatives, we can invoke the .backward method on our result y.
+要计算导数，我们可以在结果 y 上调用 .backward 方法。
 
 ```
-# Compute derivatives
+# 计算导数
 y.backward()
 ```
-The derivatives of y with respect to the input tensors are stored in the .grad property of the respective tensors.
+y 关于输入张量的导数存储在相应张量的 .grad 属性中，如下所示
 ```
 # Display gradients
 print('dy/dx:', x.grad)
@@ -176,9 +174,16 @@ print('dy/dw:', w.grad)
 print('dy/db:', b.grad)
 ```
 
-As expected, dy/dw has the same value as x, i.e., 3, and dy/db has the value 1. Note that x.grad is None because x doesn't have requires_grad set to True.
+Output:
 
-The "grad" in w.grad is short for gradient, which is another term for derivative. The term gradient is primarily used while dealing with vectors and matrices.
+```
+dy/dx: None
+dy/dw: tensor(3.)
+dy/db: tensor(1.)
+```
+dy/dw 与 x 具有相同的值，即为3，而 dy/db为1。请注意，x.grad 为 None，因为 x 没有将 requires_grad 设置为 True。
 
-## test for git
+补充： w.grad 中的“grad”是梯度的缩写，是导数的另一种说法。 梯度一词主要用于处理向量和矩阵。
+
+
 
