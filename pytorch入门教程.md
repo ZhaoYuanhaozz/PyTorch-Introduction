@@ -189,5 +189,81 @@ dy/dw 与 x 具有相同的值，即为3，而 dy/db为1。请注意，x.grad �
 
 补充： w.grad 中的“grad”是梯度的缩写，是导数的另一种说法。 梯度一词主要用于处理向量和矩阵。
 
+### 4. 与Numpy的互操作性
+Numpy是一个流行的开源库，用于Python中的数学和科学计算。我们学习这部分是因为，有一些数据我们需要通过Numpy和Pandas库进行处理，处理过后的数据再转化为Tensor进行处理。
 
+##### 简单介绍Numpy
+<details>
+<summary> Numpy操作 </summary>
+<pre><code>
+Numpy的操作和上面的讲述的Tensor的操作大致相同。
+* 创建numpy数组
+```
+import numpy as np
+kanto = np.array([73, 67, 43])
+kanto
+```
+Output:
+```
+array([73, 67, 43])
+```
+Numpy arrays的格式是ndarray.
+```
+type(kanto)
+```
+Output:
+```
+numpy.ndarray
+```
+* numpy array相乘
+
+```
+arr1 = np.array([1, 2, 3])
+arr2 = np.array([4, 5, 6])
+arr1 * arr2
+```
+Output:
+```
+array([ 4, 10, 18])
+```
+
+
+</code></pre>
+</details>
+
+##### Numpy和Tensor之间的相互转换
+
+* 创造一个Numpy array
+```
+import numpy as np
+
+x = np.array([[1, 2], [3, 4.]])
+x
+```
+Output:
+```
+array([[1., 2.],
+       [3., 4.]])
+```
+* 将numpy array 转化为tensor
+
+```
+y = torch.from_numpy(x)
+y
+```
+Output:
+```
+tensor([[1., 2.],
+        [3., 4.]], dtype=torch.float64)
+```
+* 将tensor转化为numpy array
+```
+z = y.numpy()
+z
+```
+Output:
+```
+array([[1., 2.],
+       [3., 4.]])
+```
 
