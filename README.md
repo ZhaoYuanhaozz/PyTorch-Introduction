@@ -3,4 +3,4 @@
 --------------------------------------------------------------------------------
 
 # PyTorch-Introduction
-PyTroch入门教程 By Yuanhao
+*Yuanhao PyTorch-Introduction
